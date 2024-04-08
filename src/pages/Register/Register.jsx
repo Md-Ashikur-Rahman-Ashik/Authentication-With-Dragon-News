@@ -1,15 +1,28 @@
 import { Link } from "react-router-dom";
 import Navbar from "../Shared/Navbar/Navbar";
+import { useContext } from "react";
+import { AuthContext } from "../../providers/AuthProvider";
 
 const Register = () => {
+  const { createUser } = useContext(AuthContext);
+
   const handleRegister = (e) => {
     e.preventDefault();
 
     // const email = e.target.email.value;
     // const password = e.target.password.value;
-    console.log(e.currentTarget);
     const form = new FormData(e.currentTarget);
-    console.log(form.get("email"));
+    const name = form.get("name");
+    const photoURL = form.get("photoURL");
+    const email = form.get("email");
+    const password = form.get("password");
+    // console.log("The email is:", email);
+    // console.log("The password is:", password);
+
+    // Create User
+    createUser(email, password)
+      .then((result) => console.log(result.user))
+      .catch((error) => console.error(error));
   };
 
   return (
