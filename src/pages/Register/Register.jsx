@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 import Navbar from "../Shared/Navbar/Navbar";
 
-const Login = () => {
-  const handleLogin = (e) => {
+const Register = () => {
+  const handleRegister = (e) => {
     e.preventDefault();
 
     // const email = e.target.email.value;
@@ -16,11 +16,35 @@ const Login = () => {
     <div>
       <Navbar></Navbar>
       <div>
-        <h2 className="text-3xl my-10 text-center">Please Login</h2>
+        <h2 className="text-3xl my-10 text-center">Please Register</h2>
         <form
-          onSubmit={handleLogin}
+          onSubmit={handleRegister}
           className="card-body lg:w-1/2 md:w-3/4 mx-auto"
         >
+          <div className="form-control">
+            <label className="label">
+              <span className="label-text">Name</span>
+            </label>
+            <input
+              type="text"
+              placeholder="Name"
+              className="input input-bordered"
+              name="name"
+              required
+            />
+          </div>
+          <div className="form-control">
+            <label className="label">
+              <span className="label-text">Photo URL</span>
+            </label>
+            <input
+              type="text"
+              placeholder="Photo URL"
+              className="input input-bordered"
+              name="photoURL"
+              required
+            />
+          </div>
           <div className="form-control">
             <label className="label">
               <span className="label-text">Email</span>
@@ -44,20 +68,15 @@ const Login = () => {
               name="password"
               required
             />
-            <label className="label w-full flex justify-center mt-2">
-              <a href="#" className="label-text-alt link link-hover">
-                Forgot password?
-              </a>
-            </label>
           </div>
           <div className="form-control mt-6">
-            <button className="btn btn-primary">Login</button>
+            <button className="btn btn-primary">Register</button>
           </div>
         </form>
         <p className="flex justify-center gap-2">
-          Do not have an account?
-          <Link className="text-blue-600 font-bold" to="/register">
-            Register
+          Already have an account?
+          <Link className="text-blue-600 font-bold" to="/login">
+            Login
           </Link>
         </p>
       </div>
@@ -65,4 +84,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Register;
